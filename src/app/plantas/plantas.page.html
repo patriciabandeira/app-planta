@@ -1,0 +1,41 @@
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          Plantas
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
+<ion-content>
+ 
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)" placeholder="Informe o nome da Planta"></ion-searchbar>
+ 
+  <ion-item>
+    <ion-label>Selecione o Tipo</ion-label>
+    <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
+      <ion-select-option value="">Todos</ion-select-option>
+      <ion-select-option value="movie">Filmes</ion-select-option>
+      <ion-select-option value="series">Séries</ion-select-option>
+      <ion-select-option value="episode">Episódios</ion-select-option>
+    </ion-select>
+  </ion-item>
+ 
+  <ion-list>
+ 
+    <ion-item button *ngFor="let item of (resultado?.data)" [routerLink]="['/', 'planta', item.id]">
+      <ion-avatar slot="start">
+        <img [src]="item.imagens[0].url" *ngIf="item.imagens.length > 0">
+      </ion-avatar>
+ 
+      <ion-label text-wrap>
+        <h3>{{ item.nome_cientifico }}</h3>
+        {{ item.autoria }}
+      </ion-label> 
+    </ion-item>
+ 
+  </ion-list>
+ 
+</ion-content>

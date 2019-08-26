@@ -1,0 +1,47 @@
+.info-img {
+    max-height: 50vh;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.gallery-img{
+    width: 96px;
+    height: 96px;
+    max-width: initial;
+    margin: 0px auto;
+}
+
+.hydrated > ion-col {
+    // max-width: 104px;
+}
+
+.coluna-legenda {
+    // min-width: 150px !important;
+    // max-width: 150px !important;
+    // width: 150px !important;
+}
+
+.hydrated > ion-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.hydrated > ion-row {
+    border-bottom: 1px solid #CCC
+}
+
+.hydrated > ion-card-title {
+    font-style: italic;
+}
+
+.sc-ion-label-md-s h2 {
+    font-weight: bold;
+}
+
+.card-content-md h4 {
+    font-weight: bold;
+}
+
+.col{
+    border: think solid black;
+}
