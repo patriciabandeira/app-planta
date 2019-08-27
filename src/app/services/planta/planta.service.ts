@@ -29,8 +29,8 @@ export interface IPlanta {
   providedIn: 'root'
 })
 export class PlantaService {
-	//url = 'http://localhost/web-plantas2/api/planta';
-	url = 'http://192.168.43.218/web-plantas2/api/planta';
+	url = 'http://localhost/web-plantas2/api/planta';
+	//url = 'http://192.168.43.218/web-plantas2/api/planta';
  
 	/**
 	* Constructor of the Service with Dependency Injection
