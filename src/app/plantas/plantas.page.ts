@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class PlantasPage implements OnInit {
 
 	results: Observable<any>;
-	resultado: null;
+	resultado: any;
 	searchTerm: string = '';
 	type: SearchType = SearchType.all;
 
@@ -26,7 +26,7 @@ export class PlantasPage implements OnInit {
 		});;
 	}
 
-	searchChanged() {
+	searchChanged($event: any) {
 		// Call our service function which returns an Observable
 		//this.results = this.movieService.searchData(this.searchTerm, this.type);
 	}

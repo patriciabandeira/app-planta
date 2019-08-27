@@ -85,7 +85,7 @@
       <ion-grid>
         <ion-row>
           <ion-col col-2 *ngFor="let imagem of planta.imagens; let i = index" [attr.data-index]="i">
-            <img [src]="imagem.url" class="gallery-img" title="{{i+1}} - {{imagem.autor}} - {{imagem.fonte}}" alt="Imagem {{i+1}}"/>
+            <img [src]="'https://api.miniature.io/?url='+imagem.url" class="gallery-img" title="{{i+1}} - {{imagem.autor}} - {{imagem.fonte}}" alt="Imagem {{i+1}}"/>
           </ion-col>
         </ion-row>
       </ion-grid>

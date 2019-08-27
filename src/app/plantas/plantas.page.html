@@ -27,7 +27,7 @@
  
     <ion-item button *ngFor="let item of (resultado?.data)" [routerLink]="['/', 'planta', item.id]">
       <ion-avatar slot="start">
-        <img [src]="item.imagens[0].url" *ngIf="item.imagens.length > 0">
+        <img [src]="'https://api.miniature.io/?url='+item.imagens[0].url" *ngIf="item.imagens.length > 0">
       </ion-avatar>
  
       <ion-label text-wrap>
