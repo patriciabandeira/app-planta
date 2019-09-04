@@ -24,7 +24,6 @@
       </ion-item>
       {{ planta?.descricao }}
       
- 
       <ion-item lines="none">
         <ion-icon name="clipboard" slot="start"></ion-icon>
         <ion-label text-wrap><h2>Informações</h2></ion-label>
@@ -34,27 +33,23 @@
           <ion-row>
             <ion-col class="coluna-legenda">
               <h4>Nome(s) Popular:</h4>
-            </ion-col>
-            <ion-col>
-              {{ planta?.nome_popular }}
+              {{ planta?.nome_popular.split(',').join(', ') }}
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col>
               <h4>Autoria:</h4>
-            </ion-col>
-            <ion-col>
               {{ planta?.autoria }}
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col>
-              <h4>PANC:</h4>
+              <h4>Planta Alimentícia Não Convencional:</h4>
             </ion-col>
             <ion-col>
-              {{ planta?.e_panc }}
+              {{ planta?.e_panc && 'Sim' || 'Não' }}
             </ion-col>
           </ion-row>
 
@@ -69,12 +64,26 @@
 
           <ion-row>
             <ion-col>
-              <h4>Grau de Ameaça:</h4>
+              <h4>Grau de Ameaça IUCN:</h4>
             </ion-col>
             <ion-col>
-              {{ planta?.grau_ameaca_iucn }}
+              {{ planta?.grau_ameaca_iucn | uppercase}}
             </ion-col>
           </ion-row>
+
+          <ion-row>
+              <ion-col>
+                <h4>Distribuição Geográfica.:</h4>
+                {{ ufsString }}
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                  <h4>Biomas Predominantes:</h4>
+                  {{ biomasString }}
+                </ion-col>
+              </ion-row>
         </ion-grid>
  
       <ion-item lines="none">
@@ -85,12 +94,11 @@
       <ion-grid>
         <ion-row>
           <ion-col col-2 *ngFor="let imagem of planta.imagens; let i = index" [attr.data-index]="i">
-            <img [src]="'https://api.miniature.io/?url='+imagem.url" class="gallery-img" title="{{i+1}} - {{imagem.autor}} - {{imagem.fonte}}" alt="Imagem {{i+1}}"/>
+            <img [src]="'https://api.miniature.io/?url='+imagem.url" (click)="verImagem(i, imagem)" class="gallery-img" title="{{i+1}} - {{imagem.autor}} - {{imagem.fonte}}" alt="Imagem {{i+1}}"/>
           </ion-col>
         </ion-row>
       </ion-grid>
- 
-      
+
     </ion-card-content>
   </ion-card>
   

@@ -29,8 +29,8 @@ export interface IPlanta {
   providedIn: 'root'
 })
 export class PlantaService {
-	url = 'http://localhost/web-plantas2/api/planta';
-	//url = 'http://192.168.43.218/web-plantas2/api/planta';
+	//url = 'http://localhost/web-plantas2/api/planta';
+	url = 'http://192.168.1.50/web-plantas2/api/planta';
  
 	/**
 	* Constructor of the Service with Dependency Injection
@@ -59,11 +59,12 @@ export class PlantaService {
 	* @param {SearchType} type movie, series, episode or empty
 	* @returns Observable with the search results
 	*/
-	//buscarPlanta(title: string, type: SearchType): Observable<any> {
+	buscarPlanta(title: string, type: SearchType): Observable<any> {
 		//return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${type}`).pipe(
 		//	map(results => results['data'])
 		//);
-	//}
+		return this.http.get(`${this.url}/pesquisar?nome=${encodeURI(title)}`);
+	}
 
 	/**
 	* Get the detailed information for an ID using the "i" parameter

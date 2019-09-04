@@ -10,8 +10,8 @@
   </ion-header>
  
 <ion-content>
- 
-  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)" placeholder="Informe o nome da Planta"></ion-searchbar>
+
+  <ion-searchbar [(ngModel)]="searchTerm" (keyup.enter)="searchChanged($event)" (ionCancel)="onCancel($event)" [showCancelButton]="shouldShowCancel" autocorrect="off" placeholder="Informe o nome da Planta"></ion-searchbar>
  
   <ion-item>
     <ion-label>Selecione o Tipo</ion-label>
