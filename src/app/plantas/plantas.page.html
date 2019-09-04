@@ -13,7 +13,7 @@
 
   <ion-searchbar [(ngModel)]="searchTerm" (keyup.enter)="searchChanged($event)" (ionCancel)="onCancel($event)" [showCancelButton]="shouldShowCancel" autocorrect="off" placeholder="Informe o nome da Planta"></ion-searchbar>
  
-  <ion-item>
+  <ion-item style="display: none;">
     <ion-label>Selecione o Tipo</ion-label>
     <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
       <ion-select-option value="">Todos</ion-select-option>
