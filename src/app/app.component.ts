@@ -16,16 +16,6 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
-	{
-      title: 'Filmes',
-      url: '/filme',
-      icon: 'videocam'
-    },
-  {
       title: 'Plantas',
       url: '/planta',
       icon: 'list'
