@@ -13,13 +13,10 @@
 
   <ion-searchbar [(ngModel)]="searchTerm" (keyup.enter)="searchChanged($event)" (ionCancel)="onCancel($event)" [showCancelButton]="shouldShowCancel" autocorrect="off" placeholder="Informe o nome da Planta"></ion-searchbar>
  
-  <ion-item style="display: none;">
-    <ion-label>Selecione o Tipo</ion-label>
-    <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
-      <ion-select-option value="">Todos</ion-select-option>
-      <ion-select-option value="movie">Filmes</ion-select-option>
-      <ion-select-option value="series">Séries</ion-select-option>
-      <ion-select-option value="episode">Episódios</ion-select-option>
+  <ion-item>
+    <ion-label>Selecione o Bioma</ion-label>
+    <ion-select [(ngModel)]="bioma" name="bioma" (ionChange)="searchChanged($event)">
+      <ion-select-option *ngFor="let bioma of biomas | async" [value]="bioma.id">{{bioma.nome}}</ion-select-option>
     </ion-select>
   </ion-item>
  

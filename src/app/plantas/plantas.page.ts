@@ -1,4 +1,5 @@
-import { PlantaService, SearchType } from './../services/planta/planta.service';
+import { PlantaService } from './../services/planta/planta.service';
+import { BiomaService, IBioma } from './../services/bioma/bioma.service';
 import { LoadingService } from './../services/loading.service';
 import { ToastService } from './../services/toast.service';
 
@@ -12,21 +13,21 @@ import { Observable } from 'rxjs';
 })
 export class PlantasPage implements OnInit {
 
-	results: Observable<any>;
+	biomas: Observable<IBioma[]>;
 	resultado: any;
 	searchTerm: string;
 	lastSearchTerm: string;
-	type: SearchType = SearchType.all;
-	isItemAvailable: boolean;
-	items : any[];
+	bioma: number;
+	lastBioma : number;
 
 	/**
 	* Constructor of our first page
 	* @param plantaService The planta Service to get data
 	*/
-	constructor(private plantaService: PlantaService, private loading: LoadingService, private tost: ToastService) { }
+	constructor(private plantaService: PlantaService, private biomaService: BiomaService, private loading: LoadingService, private tost: ToastService) { }
 
 	ngOnInit() {
+		this.carregarBiomas();
 		this.carregarPlantas();
 	}
 
@@ -43,13 +44,18 @@ export class PlantasPage implements OnInit {
 		});
 	}
 
+	carregarBiomas(){
+		this.biomas = this.biomaService.listarBiomas();
+	}
+
 	searchChanged($event: any) {
-		if(this.searchTerm.length < 3 || this.searchTerm == this.lastSearchTerm){
+		if(typeof this.searchTerm != 'undefined' && this.searchTerm && this.searchTerm.length < 3 && this.bioma == 0 || this.lastSearchTerm != undefined && this.searchTerm == this.lastSearchTerm && this.lastBioma == this.bioma){
 			return;
-		}
+		}		
 		this.loading.present();
-		this.plantaService.buscarPlanta(this.searchTerm, this.type).subscribe(result => {
+		this.plantaService.buscarPlanta(this.searchTerm, this.bioma).subscribe(result => {
 			this.lastSearchTerm = this.searchTerm;
+			this.lastBioma = this.bioma;
 			this.resultado = result;
 			this.loading.dismiss();
 		}, () => {

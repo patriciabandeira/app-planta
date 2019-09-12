@@ -1,15 +1,8 @@
+import { IBioma } from './../../services/bioma/bioma.service';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-// Typescript custom enum for search types (optional)
-export enum SearchType {
-  all = '',
-  movie = 'movie',
-  series = 'series',
-  episode = 'episode'
-}
 
 export interface IPlanta {
 	data: any;
@@ -29,8 +22,7 @@ export interface IPlanta {
   providedIn: 'root'
 })
 export class PlantaService {
-	//url = 'http://localhost/web-plantas2/api/planta';
-	url = 'http://192.168.1.50/web-plantas2/api/planta';
+	url = 'http://webplanta-cb.herokuapp.com/api/planta';
  
 	/**
 	* Constructor of the Service with Dependency Injection
@@ -40,11 +32,9 @@ export class PlantaService {
 
 
 	/**
-	* Get data from the OmdbApi 
+	* Get data from the API 
 	* map the result to return only the results that we need
 	* 
-	* @param {string} title Search Term
-	* @param {SearchType} type movie, series, episode or empty
 	* @returns Observable with the search results
 	*/
 	listarPlantas(): Observable<any> {
@@ -55,19 +45,21 @@ export class PlantaService {
 	* Get data from the OmdbApi 
 	* map the result to return only the results that we need
 	* 
-	* @param {string} title Search Term
-	* @param {SearchType} type movie, series, episode or empty
 	* @returns Observable with the search results
 	*/
-	buscarPlanta(title: string, type: SearchType): Observable<any> {
-		//return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${type}`).pipe(
-		//	map(results => results['data'])
-		//);
-		return this.http.get(`${this.url}/pesquisar?nome=${encodeURI(title)}`);
+	buscarPlanta(title: string, bioma: number): Observable<any> {
+		let params: HttpParams = new HttpParams();
+		if(typeof title != 'undefined' && title){
+			params = params.set('nome', title); 
+		}
+		if(typeof bioma != 'undefined' && bioma){
+			params = params.set('bioma', bioma.toString()); 
+		}
+		return this.http.get(`${this.url}/pesquisar`, {params});
 	}
 
 	/**
-	* Get the detailed information for an ID using the "i" parameter
+	* Get the detailed information
 	* 
 	* @param {string} id imdbID to retrieve information
 	* @returns Observable with detailed information
