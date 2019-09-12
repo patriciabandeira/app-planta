@@ -9,6 +9,9 @@ Repositório do Projeto "app-planta" - Trabalho de Conclusão de Curso - IFMS TE
 ## 1. Requisitos
 
 - Node.js >= 10.16.0
+- Java SDK >= 8.0
+- Gradle
+- Android SDK
 
 
 ## 2. Instalação
