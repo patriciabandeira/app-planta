@@ -4,7 +4,7 @@ Repositório do Projeto "app-planta" - Trabalho de Conclusão de Curso - IFMS TE
 
 1. [Requisitos](#1-requisitos)
 2. [Instalação](#2-instalação)
-3. [Acesso](#3-acesso)
+3. [Execução](#3-execução)
 
 ## 1. Requisitos
 
